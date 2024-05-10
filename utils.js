@@ -152,6 +152,7 @@ module.exports.decodeRecordData40 = (recordData)=>{
         .split('\0')
         .shift(),
         recordTime: parseTimeToDate(recordData.readUInt32LE(27)),
+        checkin: recordData.readUIntLE(31,1) == 1 ? "OUT" : "IN",
       }
       return record
 }
